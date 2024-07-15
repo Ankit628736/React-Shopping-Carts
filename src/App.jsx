@@ -6,6 +6,7 @@ import ProductDetail from './components/ProductDetail'
 import SearchItem from './components/SearchItem'
 import Cart from './components/Cart'
 import { items } from './components/Data'
+import Footer from './components/Footer'
 
 const App = () => {
   const [data, setData] = useState([...items])
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/search/:term' element={<SearchItem cart={cart} setCart={setCart}/>} />
       <Route path='/cart' element={<Cart cart={cart} setCart={setCart}/>} />
     </Routes>
+    <Footer />
     </Router>
     </>
   )

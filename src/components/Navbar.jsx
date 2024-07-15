@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { items } from "./Data";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import { FaHome } from "react-icons/fa";
 
 const Navbar = ({ setData, cart }) => {
   // console.log(useLocation());
@@ -31,9 +32,8 @@ const Navbar = ({ setData, cart }) => {
     <>
       <header className="sticky-top">
         <div className="nav-bar">
-          <Link to={"/"} className="brand">
-            E-Cart
-          </Link>
+        <Link to={'/'} className="brand  d-flex align-items-center"><div className='mx-4 hover-scale'><FaHome /></div>
+        <div className='hover-scale'>E-Cart</div></Link>
 
           <form
             // onClick={handleSubmit}
@@ -62,28 +62,28 @@ const Navbar = ({ setData, cart }) => {
       {
         location.pathname === "/" && (<div className="nav-bar-wrapper">
           <div className="items">Filter by {"->"}</div>
-          <div onClick={() => setData(items)} className="items">
+          <div onClick={() => setData(items)} className="items hover-scale">
             No Filter
           </div>
-          <div onClick={() => filterByCategory("mobiles")} className="items">
+          <div onClick={() => filterByCategory("mobiles")} className="items hover-scale">
             Mobiles
           </div>
-          <div onClick={() => filterByCategory("laptops")} className="items">
+          <div onClick={() => filterByCategory("laptops")} className="items hover-scale">
             Laptop
           </div>
-          <div onClick={() => filterByCategory("tablets")} className="items">
+          <div onClick={() => filterByCategory("tablets")} className="items hover-scale">
             Tablest
           </div>
-          <div onClick={() => filterByPrice(29000)} className="items">
+          <div onClick={() => filterByPrice(29000)} className="items hover-scale">
             {">="}29000
           </div>
-          <div onClick={() => filterByPrice(49000)} className="items">
+          <div onClick={() => filterByPrice(49000)} className="items hover-scale">
             {">="}49000
           </div>
-          <div onClick={() => filterByPrice(69000)} className="items">
+          <div onClick={() => filterByPrice(69000)} className="items hover-scale">
             {">="}69000
           </div>
-          <div onClick={() => filterByPrice(89000)} className="items">
+          <div onClick={() => filterByPrice(89000)} className="items hover-scale">
             {">="}89000
           </div>
         </div>)
