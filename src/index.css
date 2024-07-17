@@ -1,8 +1,11 @@
 
+body{
+    background-color: beige;
+}
 .nav-bar{
     display: flex;
     justify-content: space-between;
-    background-color: #270858;
+    background-color: #083958;
     padding: 10px;
     color: white;
 }
