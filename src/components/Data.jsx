@@ -80,6 +80,4 @@ export const items =  [
       description: 'Apple MacBook Air Laptop M1 chip, 13.3-inch/33.74 cm Retina Display, ',
       price: '89999',
     },
-
-
   ]
