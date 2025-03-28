@@ -22,23 +22,14 @@ const ProductDetail = ({ cart, setCart }) => {
   }, [id, product.category]);
 
   const addToCart = (id, price, title, description, imgSrc) => {
-    const obj = {
-      id,
-      price,
-      title,
-      description,
-      imgSrc,
-    };
-    setCart([...cart, obj]);
-    toast.success("Item added to cart", {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "dark",
-    });
+    const existingProduct = cart.find(item => item.id === id);
+    if (existingProduct) {
+      setCart(cart.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
+    } else {
+      const obj = { id, price, title, description, imgSrc, quantity: 1 };
+      setCart([...cart, obj]);
+    }
+    toast.success("Item added to cart");
   };
 
   return (

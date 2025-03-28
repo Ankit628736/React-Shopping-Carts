@@ -1,6 +1,8 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { FaTimes, FaPlus, FaMinus } from "react-icons/fa"; // Import icons
+import { FaTimes, FaPlus, FaMinus } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = ({ cart, setCart }) => {
   const totalPrice = useMemo(() => {
@@ -19,8 +21,22 @@ const Cart = ({ cart, setCart }) => {
     setCart(cart.map(item => item.id === productId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item));
   };
 
+  const handleCheckout = () => {
+    toast.success("Order successful!", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark",
+    });
+    setCart([]);
+  };
+
   return (
     <>
+      <ToastContainer />
       <div className="container" style={{ maxWidth: '900px', margin: '2rem auto' }}>
         {cart.length === 0 ? (
           <div className="text-center">
@@ -81,7 +97,7 @@ const Cart = ({ cart, setCart }) => {
             </div>
 
             <div className="d-flex justify-content-center gap-3 mt-4">
-              <button className="btn btn-warning">CheckOut</button>
+              <button onClick={handleCheckout} className="btn btn-warning">CheckOut</button>
               <button onClick={() => setCart([])} className="btn btn-danger">Clear Cart</button>
             </div>
           </>
